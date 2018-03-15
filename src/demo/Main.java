@@ -26,15 +26,15 @@ public class Main {
 		
 		for(;;){
 			Thread.sleep(2000);
+			ArrayList<String []> list = new ArrayList<>();
+	        //读取账号
+	        list = ContinueSeatUser();
 			//获取当前时间
 			Calendar now = Calendar.getInstance();
 			System.out.println("这里是续时程序 ...现在时间是"+now.get(Calendar.HOUR_OF_DAY)+"点"+now.get(Calendar.MINUTE)+"分");
 			//时间的判定
 			if( now.get(Calendar.HOUR_OF_DAY)==11 || now.get(Calendar.HOUR_OF_DAY)==16){
 	    	System.out.println("This is the time!!");
-	        ArrayList<String []> list = new ArrayList<>();
-	        //读取账号
-	        list = ContinueSeatUser();
 			for (int i = 0; i < list.size(); i++) {
 				System.out.println("现在续时的账号是："+list.get(i)[0]+" "+list.get(i)[1]);
 				TimeContinued.TimeContinued(list.get(i)[0],list.get(i)[1]);
@@ -56,7 +56,7 @@ public class Main {
 	public static final  ArrayList<String []> ContinueSeatUser() {
 		
 //		File file = new File("C:\\ContinueSeatUser\\User.txt");
-		File file = new File("/home/User.txt");
+		File file = new File("User.txt");
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String s = null;
